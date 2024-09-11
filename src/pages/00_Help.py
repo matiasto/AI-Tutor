@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 from assistant import Model
 
 model = Model()
@@ -26,10 +25,11 @@ if prompt := st.chat_input("What is up?"):
         thread = model.create_thread(prompt)
         st.session_state['thread_id'] = thread.id
 
-    messages = model.get_messages(st.session_state['thread_id'], st.session_state.assistants["Socratic with Hints"])
+    messages = model.get_messages(
+        st.session_state['thread_id'], st.session_state.assistants["Socratic with Hints"])
     response = messages[0]
 
     with st.chat_message("assistant"):
         st.markdown(response)
-    st.session_state.messages.append({"role": "assistant", "content": response})
-
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response})

@@ -25,10 +25,11 @@ if prompt := st.chat_input("What is up?"):
         thread = model.create_thread(prompt)
         st.session_state['thread_id'] = thread.id
 
-    messages = model.get_messages(st.session_state['thread_id'], st.session_state.assistants["Debug Helper"])
+    messages = model.get_messages(
+        st.session_state['thread_id'], st.session_state.assistants["Debug Helper"])
     response = messages[0]
 
     with st.chat_message("assistant"):
         st.markdown(response)
-    st.session_state.messages.append({"role": "assistant", "content": response})
-
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response})

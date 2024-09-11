@@ -18,14 +18,13 @@ class Create:
         with open(file_path, 'r') as file:
             return file.read()
 
-    # Function to create an assistant
     def __create_assistant(self, name, instruction):
         return self.__client.beta.assistants.create(
             name=name,
             instructions=instruction,
             tools=[{"type": "code_interpreter"}],
             model=self.__config.llm,
-            )
+        )
 
     def run(self):
         my_assistants = self.__client.beta.assistants.list(
@@ -38,25 +37,33 @@ class Create:
         instructions_folder = os.path.join(dirname, "instructions")
 
         if "Socratic with Hints" in names:
-            self.__assistants["Socratic with Hints"] = self.__get_assistant_by_name(my_assistants.data, "Socratic with Hints")
+            self.__assistants["Socratic with Hints"] = self.__get_assistant_by_name(
+                my_assistants.data, "Socratic with Hints")
         else:
-            socratic_with_hints_instruction = self.__read_instruction(f"{instructions_folder}/socratic_with_hints.txt")
-            socratic_id = self.__create_assistant("Socratic with Hints", socratic_with_hints_instruction)
+            socratic_with_hints_instruction = self.__read_instruction(
+                f"{instructions_folder}/socratic_with_hints.txt")
+            socratic_id = self.__create_assistant(
+                "Socratic with Hints", socratic_with_hints_instruction)
             self.__assistants["Socratic with Hints"] = socratic_id
-        
+
         if "Debug Helper" in names:
-            self.__assistants["Debug Helper"] = self.__get_assistant_by_name(my_assistants.data, "Debug Helper")
+            self.__assistants["Debug Helper"] = self.__get_assistant_by_name(
+                my_assistants.data, "Debug Helper")
         else:
-            debug_helper_instruction = self.__read_instruction(f"{instructions_folder}/debug_helper.txt")
-            debug_helper_id = self.__create_assistant("Debug Helper", debug_helper_instruction)
-            self.__assistants["Debug Helper"] = debug_helper_id 
+            debug_helper_instruction = self.__read_instruction(
+                f"{instructions_folder}/debug_helper.txt")
+            debug_helper_id = self.__create_assistant(
+                "Debug Helper", debug_helper_instruction)
+            self.__assistants["Debug Helper"] = debug_helper_id
 
         if "Feedbackbot" in names:
-            self.__assistants["Feedbackbot"] = self.__get_assistant_by_name(my_assistants.data, "Feedbackbot")
+            self.__assistants["Feedbackbot"] = self.__get_assistant_by_name(
+                my_assistants.data, "Feedbackbot")
         else:
-            feedbackbot_instruction = self.__read_instruction(f"{instructions_folder}/feedbackbot.txt")
-            feedbackbot_id = self.__create_assistant("Feedbackbot", feedbackbot_instruction)
+            feedbackbot_instruction = self.__read_instruction(
+                f"{instructions_folder}/feedbackbot.txt")
+            feedbackbot_id = self.__create_assistant(
+                "Feedbackbot", feedbackbot_instruction)
             self.__assistants["Feedbackbot"] = feedbackbot_id
 
         return self.__assistants
-        

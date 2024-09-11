@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 
+
 class Config:
     def __init__(self) -> None:
         self.__api_key = None
@@ -10,7 +11,7 @@ class Config:
     @property
     def api_key(self):
         return self.__api_key
-    
+
     @property
     def llm(self):
         return self.__llm

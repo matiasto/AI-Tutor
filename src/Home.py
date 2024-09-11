@@ -51,5 +51,3 @@ This project is built using a low-code approach and leverages UvA AI API and Str
 The system focuses on ethical considerations such as fairness, transparency, and non-judgmental feedback. 
 Development is ongoing, with future plans to integrate advanced features like difficulty adjustment and feedback scaling.
 """)
-
-

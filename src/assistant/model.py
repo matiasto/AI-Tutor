@@ -2,6 +2,7 @@ import requests
 from openai import OpenAI
 from config import Config
 
+
 class Model:
     def __init__(self) -> None:
         self.__config = Config()
@@ -30,9 +31,10 @@ class Model:
             thread_id=thread_id,
             assistant_id=assistant.id
         )
-        
+
         if run.status == 'completed':
-            messages = self.__client.beta.threads.messages.list(thread_id=thread_id)
+            messages = self.__client.beta.threads.messages.list(
+                thread_id=thread_id)
 
             formatted_messages = []
             for message in messages.data:
