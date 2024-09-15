@@ -10,6 +10,9 @@ packages = [{include = "ai_tutor"}]
 python = "^3.10"
 invoke = "^2.2.0"
 streamlit = "^1.38.0"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
+openai = "^1.44.1"
 
 
 [tool.poetry.group.dev.dependencies]
