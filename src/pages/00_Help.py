@@ -5,8 +5,7 @@ model = Model()
 
 st.title("Socratic Help Assistant")
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+st.session_state.messages = []
 
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
